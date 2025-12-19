@@ -8,9 +8,37 @@ use Xoshbin\CustomFields\Filament\Resources\CustomFieldDefinitionResource;
 
 class CustomFieldsPlugin implements Plugin
 {
+    protected ?string $cluster = null;
+
+    protected ?int $navigationSort = null;
+
     public function getId(): string
     {
         return 'custom-fields';
+    }
+
+    public function cluster(?string $cluster): static
+    {
+        $this->cluster = $cluster;
+
+        return $this;
+    }
+
+    public function getCluster(): ?string
+    {
+        return $this->cluster;
+    }
+
+    public function navigationSort(?int $sort): static
+    {
+        $this->navigationSort = $sort;
+
+        return $this;
+    }
+
+    public function getNavigationSort(): ?int
+    {
+        return $this->navigationSort;
     }
 
     public function register(Panel $panel): void
@@ -23,7 +51,15 @@ class CustomFieldsPlugin implements Plugin
 
     public function boot(Panel $panel): void
     {
-        //
+        // Register the resource to the cluster after plugin configuration is complete
+        // This is necessary because getCluster() is called during register(), but the
+        // plugin configuration isn't available yet at that point
+        if ($this->cluster !== null) {
+            $reflection = new \ReflectionProperty($panel, 'clusteredComponents');
+            $clusteredComponents = $reflection->getValue($panel);
+            $clusteredComponents[$this->cluster][] = CustomFieldDefinitionResource::class;
+            $reflection->setValue($panel, $clusteredComponents);
+        }
     }
 
     public static function make(): static

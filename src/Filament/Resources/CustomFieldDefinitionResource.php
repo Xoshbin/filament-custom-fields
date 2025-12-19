@@ -5,6 +5,7 @@ namespace Xoshbin\CustomFields\Filament\Resources;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables\Table;
+use Xoshbin\CustomFields\CustomFieldsPlugin;
 use Xoshbin\CustomFields\Filament\Resources\CustomFieldDefinitionResource\Pages\CreateCustomFieldDefinition;
 use Xoshbin\CustomFields\Filament\Resources\CustomFieldDefinitionResource\Pages\EditCustomFieldDefinition;
 use Xoshbin\CustomFields\Filament\Resources\CustomFieldDefinitionResource\Pages\ListCustomFieldDefinitions;
@@ -14,16 +15,31 @@ use Xoshbin\CustomFields\Models\CustomFieldDefinition;
 
 class CustomFieldDefinitionResource extends Resource
 {
-
     protected static ?string $model = CustomFieldDefinition::class;
 
     protected static bool $isScopedToTenant = false;
 
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-adjustments-horizontal';
 
-    protected static ?int $navigationSort = 10;
-
     protected static ?string $recordTitleAttribute = 'name';
+
+    public static function getCluster(): ?string
+    {
+        try {
+            return CustomFieldsPlugin::get()->getCluster();
+        } catch (\Throwable $e) {
+            return null;
+        }
+    }
+
+    public static function getNavigationSort(): ?int
+    {
+        try {
+            return CustomFieldsPlugin::get()->getNavigationSort() ?? 10;
+        } catch (\Throwable $e) {
+            return 10;
+        }
+    }
 
     /**
      * @return array<string>
