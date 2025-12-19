@@ -10,9 +10,10 @@ describe('Database Constraints and Relationships', function () {
             ->forModel(Partner::class)
             ->create();
 
-        expect(fn () => CustomFieldDefinition::factory()
-            ->forModel(Partner::class)
-            ->create()
+        expect(
+            fn () => CustomFieldDefinition::factory()
+                ->forModel(Partner::class)
+                ->create()
         )->toThrow(\Illuminate\Database\QueryException::class);
     });
 
@@ -29,10 +30,11 @@ describe('Database Constraints and Relationships', function () {
             ->forModel(Partner::class, $partner->id)
             ->create(['field_key' => 'test_field']);
 
-        expect(fn () => CustomFieldValue::factory()
-            ->forDefinition($definition)
-            ->forModel(Partner::class, $partner->id)
-            ->create(['field_key' => 'test_field'])
+        expect(
+            fn () => CustomFieldValue::factory()
+                ->forDefinition($definition)
+                ->forModel(Partner::class, $partner->id)
+                ->create(['field_key' => 'test_field'])
         )->toThrow(\Illuminate\Database\QueryException::class);
     });
 
@@ -107,9 +109,10 @@ describe('Database Constraints and Relationships', function () {
         $partner->save();
 
         // Try to create a custom field value with non-existent definition ID
-        expect(fn () => CustomFieldValue::factory()
-            ->forModel(Partner::class, $partner->id)
-            ->create(['custom_field_definition_id' => 99999])
+        expect(
+            fn () => CustomFieldValue::factory()
+                ->forModel(Partner::class, $partner->id)
+                ->create(['custom_field_definition_id' => 99999])
         )->toThrow(\Illuminate\Database\QueryException::class);
     });
 

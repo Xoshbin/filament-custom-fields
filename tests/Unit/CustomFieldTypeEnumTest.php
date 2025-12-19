@@ -1,7 +1,7 @@
 <?php
 
-use Xoshbin\CustomFields\Enums\CustomFieldType;
 use Carbon\Carbon;
+use Xoshbin\CustomFields\Enums\CustomFieldType;
 
 describe('CustomFieldType Enum', function () {
     it('provides correct labels for all field types', function () {

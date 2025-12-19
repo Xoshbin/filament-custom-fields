@@ -8,7 +8,6 @@ use Xoshbin\CustomFields\Filament\Resources\CustomFieldDefinitionResource;
 
 class ListCustomFieldDefinitions extends ListRecords
 {
-
     protected static string $resource = CustomFieldDefinitionResource::class;
 
     protected function getHeaderActions(): array

@@ -1,10 +1,9 @@
 <?php
 
+use Carbon\Carbon;
 use Xoshbin\CustomFields\Models\CustomFieldDefinition;
 use Xoshbin\CustomFields\Models\CustomFieldValue;
-use Xoshbin\CustomFields\Enums\CustomFieldType;
 use Xoshbin\CustomFields\Tests\Models\Partner;
-use Carbon\Carbon;
 
 describe('CustomFieldValue Model', function () {
     it('can store and retrieve text values correctly', function () {
@@ -104,10 +103,11 @@ describe('CustomFieldValue Model', function () {
             ->forModel(Partner::class, $partner->id)
             ->create(['field_key' => 'industry']);
 
-        expect(fn () => CustomFieldValue::factory()
-            ->forDefinition($definition)
-            ->forModel(Partner::class, $partner->id)
-            ->create(['field_key' => 'industry'])
+        expect(
+            fn () => CustomFieldValue::factory()
+                ->forDefinition($definition)
+                ->forModel(Partner::class, $partner->id)
+                ->create(['field_key' => 'industry'])
         )->toThrow(\Illuminate\Database\QueryException::class);
     });
 

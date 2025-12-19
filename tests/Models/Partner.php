@@ -8,7 +8,7 @@ use Xoshbin\CustomFields\Traits\HasCustomFields;
 
 /**
  * Test model for testing HasCustomFields trait functionality.
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string|null $email
@@ -17,7 +17,8 @@ use Xoshbin\CustomFields\Traits\HasCustomFields;
  */
 class Partner extends Model
 {
-    use HasFactory, HasCustomFields;
+    use HasCustomFields;
+    use HasFactory;
 
     protected $fillable = [
         'name',
