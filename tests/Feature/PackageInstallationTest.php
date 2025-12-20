@@ -1,9 +1,9 @@
 <?php
 
-use Xoshbin\CustomFields\CustomFieldsServiceProvider;
-use Xoshbin\CustomFields\CustomFieldsPlugin;
-use Xoshbin\CustomFields\Facades\CustomFields;
 use Illuminate\Support\Facades\Schema;
+use Xoshbin\CustomFields\CustomFieldsPlugin;
+use Xoshbin\CustomFields\CustomFieldsServiceProvider;
+use Xoshbin\CustomFields\Facades\CustomFields;
 
 describe('Package Installation and Setup', function () {
     it('registers the service provider correctly', function () {
@@ -18,14 +18,14 @@ describe('Package Installation and Setup', function () {
 
     it('has correct table structure for custom_field_definitions', function () {
         expect(Schema::hasColumns('custom_field_definitions', [
-            'id', 'model_type', 'field_definitions', 'name', 'description', 'is_active', 'created_at', 'updated_at'
+            'id', 'model_type', 'field_definitions', 'name', 'description', 'is_active', 'created_at', 'updated_at',
         ]))->toBeTrue();
     });
 
     it('has correct table structure for custom_field_values', function () {
         expect(Schema::hasColumns('custom_field_values', [
             'id', 'custom_field_definition_id', 'customizable_type', 'customizable_id',
-            'field_key', 'field_value', 'created_at', 'updated_at'
+            'field_key', 'field_value', 'created_at', 'updated_at',
         ]))->toBeTrue();
     });
 

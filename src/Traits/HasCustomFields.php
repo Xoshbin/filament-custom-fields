@@ -148,8 +148,6 @@ trait HasCustomFields
         }
     }
 
-
-
     /**
      * Remove a custom field value.
      */

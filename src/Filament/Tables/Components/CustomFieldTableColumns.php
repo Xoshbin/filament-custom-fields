@@ -2,11 +2,11 @@
 
 namespace Xoshbin\CustomFields\Filament\Tables\Components;
 
-use Xoshbin\CustomFields\Enums\CustomFieldType;
-use Xoshbin\CustomFields\Models\CustomFieldDefinition;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Collection;
+use Xoshbin\CustomFields\Enums\CustomFieldType;
+use Xoshbin\CustomFields\Models\CustomFieldDefinition;
 
 /**
  * CustomFieldTableColumns
@@ -19,8 +19,7 @@ class CustomFieldTableColumns
     /**
      * Generate table columns for custom fields marked as show_in_table.
      *
-     * @param string $modelClass The model class (e.g., 'App\Models\Partner')
-     * @return array
+     * @param  string  $modelClass  The model class (e.g., 'App\Models\Partner')
      */
     public static function make(string $modelClass): array
     {
@@ -28,7 +27,7 @@ class CustomFieldTableColumns
             ->where('is_active', true)
             ->first();
 
-        if (!$definition || empty($definition->field_definitions)) {
+        if (! $definition || empty($definition->field_definitions)) {
             return [];
         }
 
@@ -45,8 +44,7 @@ class CustomFieldTableColumns
     /**
      * Generate table columns from field definitions.
      *
-     * @param Collection<int, array> $fieldDefinitions
-     * @return array
+     * @param  Collection<int, array>  $fieldDefinitions
      */
     protected static function generateColumns(Collection $fieldDefinitions): array
     {
@@ -65,17 +63,14 @@ class CustomFieldTableColumns
 
     /**
      * Generate a single table column from field definition.
-     *
-     * @param array $definition
-     * @return TextColumn|IconColumn|null
      */
-    protected static function generateColumn(array $definition): TextColumn|IconColumn|null
+    protected static function generateColumn(array $definition): TextColumn | IconColumn | null
     {
         $fieldKey = $definition['key'] ?? null;
         $fieldType = CustomFieldType::tryFrom($definition['type'] ?? '');
         $label = static::getFieldLabel($definition);
 
-        if (!$fieldKey || !$fieldType || !$label) {
+        if (! $fieldKey || ! $fieldType || ! $label) {
             return null;
         }
 
@@ -89,6 +84,7 @@ class CustomFieldTableColumns
                 ->limit(50)
                 ->tooltip(function ($record) use ($fieldKey) {
                     $value = $record->getCustomFieldValue($fieldKey);
+
                     return is_string($value) && strlen($value) > 50 ? $value : null;
                 }),
 
@@ -114,7 +110,7 @@ class CustomFieldTableColumns
                 ->searchable()
                 ->sortable()
                 ->formatStateUsing(function ($state) use ($definition) {
-                    if (!$state) {
+                    if (! $state) {
                         return null;
                     }
 
@@ -130,9 +126,6 @@ class CustomFieldTableColumns
 
     /**
      * Get the field label from definition.
-     *
-     * @param array $definition
-     * @return string|null
      */
     protected static function getFieldLabel(array $definition): ?string
     {
@@ -141,9 +134,6 @@ class CustomFieldTableColumns
 
     /**
      * Get searchable custom field columns for a model.
-     *
-     * @param string $modelClass
-     * @return array
      */
     public static function getSearchableColumns(string $modelClass): array
     {
@@ -151,7 +141,7 @@ class CustomFieldTableColumns
             ->where('is_active', true)
             ->first();
 
-        if (!$definition || empty($definition->field_definitions)) {
+        if (! $definition || empty($definition->field_definitions)) {
             return [];
         }
 
@@ -175,9 +165,6 @@ class CustomFieldTableColumns
 
     /**
      * Get sortable custom field columns for a model.
-     *
-     * @param string $modelClass
-     * @return array
      */
     public static function getSortableColumns(string $modelClass): array
     {
@@ -185,7 +172,7 @@ class CustomFieldTableColumns
             ->where('is_active', true)
             ->first();
 
-        if (!$definition || empty($definition->field_definitions)) {
+        if (! $definition || empty($definition->field_definitions)) {
             return [];
         }
 

@@ -1,10 +1,10 @@
 <?php
 
-use Xoshbin\CustomFields\Models\CustomFieldDefinition;
-use Xoshbin\CustomFields\Filament\Forms\Components\CustomFieldsComponent;
-use Xoshbin\CustomFields\Tests\Models\Partner;
-use Xoshbin\CustomFields\Enums\CustomFieldType;
 use Filament\Schemas\Components\Fieldset;
+use Xoshbin\CustomFields\Enums\CustomFieldType;
+use Xoshbin\CustomFields\Filament\Forms\Components\CustomFieldsComponent;
+use Xoshbin\CustomFields\Models\CustomFieldDefinition;
+use Xoshbin\CustomFields\Tests\Models\Partner;
 
 describe('Filament Component Integration', function () {
     it('generates form fields for active custom field definitions', function () {

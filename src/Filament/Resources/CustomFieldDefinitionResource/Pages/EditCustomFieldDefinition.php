@@ -8,7 +8,6 @@ use Xoshbin\CustomFields\Filament\Resources\CustomFieldDefinitionResource;
 
 class EditCustomFieldDefinition extends EditRecord
 {
-
     protected static string $resource = CustomFieldDefinitionResource::class;
 
     public function getTitle(): string
