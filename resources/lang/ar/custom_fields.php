@@ -81,14 +81,4 @@ return [
         'field_removed' => 'تم إزالة الحقل بنجاح.',
         'invalid_model_type' => 'تم اختيار نوع نموذج غير صحيح.',
     ],
-
-    'model_types' => [
-        'App\\Models\\Partner' => 'الشركاء',
-        'App\\Models\\Product' => 'المنتجات',
-        'App\\Models\\Employee' => 'الموظفون',
-        'App\\Models\\Department' => 'الأقسام',
-        'App\\Models\\Position' => 'المناصب',
-        'App\\Models\\Asset' => 'الأصول',
-        'App\\Models\\Project' => 'المشاريع',
-    ],
 ];

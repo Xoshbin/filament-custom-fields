@@ -81,14 +81,4 @@ return [
         'field_removed' => 'خانە بە سەرکەوتوویی لابرا.',
         'invalid_model_type' => 'جۆری مۆدێلی نادروست هەڵبژێردراوە.',
     ],
-
-    'model_types' => [
-        'App\\Models\\Partner' => 'هاوبەشەکان',
-        'App\\Models\\Product' => 'بەرهەمەکان',
-        'App\\Models\\Employee' => 'کارمەندەکان',
-        'App\\Models\\Department' => 'بەشەکان',
-        'App\\Models\\Position' => 'پۆستەکان',
-        'App\\Models\\Asset' => 'سامانەکان',
-        'App\\Models\\Project' => 'پڕۆژەکان',
-    ],
 ];
