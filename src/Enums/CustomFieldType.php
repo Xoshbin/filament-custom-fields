@@ -98,8 +98,6 @@ enum CustomFieldType: string implements HasColor, HasIcon, HasLabel
         };
     }
 
-
-
     /**
      * Get the default value for this field type.
      */

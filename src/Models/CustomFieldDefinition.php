@@ -76,8 +76,6 @@ class CustomFieldDefinition extends Model
         $this->attributes['field_definitions'] = json_encode($value);
     }
 
-
-
     /**
      * The model's default values for attributes.
      *

@@ -1,9 +1,9 @@
 <?php
 
+use Xoshbin\CustomFields\Enums\CustomFieldType;
 use Xoshbin\CustomFields\Models\CustomFieldDefinition;
 use Xoshbin\CustomFields\Models\CustomFieldValue;
 use Xoshbin\CustomFields\Tests\Models\Partner;
-use Xoshbin\CustomFields\Enums\CustomFieldType;
 
 describe('Validation and Edge Cases', function () {
     it('handles empty field definitions gracefully', function () {
@@ -42,6 +42,7 @@ describe('Validation and Edge Cases', function () {
         foreach ($errors as $fieldErrors) {
             if (is_array($fieldErrors) && in_array('Key must be unique', $fieldErrors)) {
                 $hasUniqueError = true;
+
                 break;
             }
         }
@@ -87,7 +88,7 @@ describe('Validation and Edge Cases', function () {
         // getDisplayValue() should handle this gracefully by checking for array values
         // Since the default case tries to cast to string, it will fail with arrays
         // Let's test that it throws an error or handles it somehow
-        expect(fn() => $value->getDisplayValue())->toThrow(\ErrorException::class);
+        expect(fn () => $value->getDisplayValue())->toThrow(\ErrorException::class);
     });
 
     it('validates select field values against available options', function () {

@@ -155,14 +155,13 @@ class CustomFieldValue extends Model
 
         if (! $fieldType) {
             $this->field_value = ['value' => $value];
+
             return;
         }
 
         // Store as simple value
         $this->field_value = ['value' => $fieldType->castValue($value)];
     }
-
-
 
     /**
      * Check if this field is required.

@@ -21,7 +21,7 @@ describe('Performance and Bulk Operations', function () {
 
         // Bulk set custom field values
         $startTime = microtime(true);
-        
+
         foreach ($partners as $index => $partner) {
             $partner->setCustomFieldValues([
                 'industry' => "Industry {$index}",
@@ -56,7 +56,7 @@ describe('Performance and Bulk Operations', function () {
 
         // Load all partners with custom field values
         $partners = Partner::with('customFieldValues')->get();
-        
+
         // Access custom field values (should not trigger additional queries)
         foreach ($partners as $partner) {
             $values = $partner->getCustomFieldValues();

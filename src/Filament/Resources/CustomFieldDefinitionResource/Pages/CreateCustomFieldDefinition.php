@@ -7,7 +7,6 @@ use Xoshbin\CustomFields\Filament\Resources\CustomFieldDefinitionResource;
 
 class CreateCustomFieldDefinition extends CreateRecord
 {
-
     protected static string $resource = CustomFieldDefinitionResource::class;
 
     public function getTitle(): string

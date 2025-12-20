@@ -1,9 +1,9 @@
 <?php
 
+use Xoshbin\CustomFields\Enums\CustomFieldType;
 use Xoshbin\CustomFields\Models\CustomFieldDefinition;
 use Xoshbin\CustomFields\Models\CustomFieldValue;
 use Xoshbin\CustomFields\Tests\Models\Partner;
-use Xoshbin\CustomFields\Enums\CustomFieldType;
 
 describe('Custom Fields Integration', function () {
     it('can create a complete custom fields workflow', function () {

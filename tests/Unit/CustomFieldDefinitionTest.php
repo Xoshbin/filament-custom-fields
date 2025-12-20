@@ -1,8 +1,8 @@
 <?php
 
+use Xoshbin\CustomFields\Enums\CustomFieldType;
 use Xoshbin\CustomFields\Models\CustomFieldDefinition;
 use Xoshbin\CustomFields\Models\CustomFieldValue;
-use Xoshbin\CustomFields\Enums\CustomFieldType;
 use Xoshbin\CustomFields\Tests\Models\Partner;
 
 describe('CustomFieldDefinition Model', function () {
