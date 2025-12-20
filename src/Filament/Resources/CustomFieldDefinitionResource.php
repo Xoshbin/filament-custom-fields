@@ -92,18 +92,16 @@ class CustomFieldDefinitionResource extends Resource
 
     /**
      * Get available model types for custom fields.
+     * Returns the model types configured via the plugin.
      *
      * @return array<string, string>
      */
     public static function getAvailableModelTypes(): array
     {
-        return [
-            'App\\Models\\Partner' => __('custom-fields::custom_fields.model_types.App\\Models\\Partner'),
-            'App\\Models\\Product' => __('custom-fields::custom_fields.model_types.App\\Models\\Product'),
-            'App\\Models\\Employee' => __('custom-fields::custom_fields.model_types.App\\Models\\Employee'),
-            'App\\Models\\Department' => __('custom-fields::custom_fields.model_types.App\\Models\\Department'),
-            'App\\Models\\Position' => __('custom-fields::custom_fields.model_types.App\\Models\\Position'),
-            'App\\Models\\Asset' => __('custom-fields::custom_fields.model_types.App\\Models\\Asset'),
-        ];
+        try {
+            return CustomFieldsPlugin::get()->getModelTypes();
+        } catch (\Throwable $e) {
+            return [];
+        }
     }
 }

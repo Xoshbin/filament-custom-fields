@@ -101,6 +101,38 @@ You can publish the translations with:
 php artisan vendor:publish --tag="custom-fields-translations"
 ```
 
+## Plugin Configuration
+
+Register the plugin in your Filament Panel Provider and configure the model types that can have custom fields:
+
+```php
+use Xoshbin\CustomFields\CustomFieldsPlugin;
+
+public function panel(Panel $panel): Panel
+{
+    return $panel
+        // ... other configurations
+        ->plugins([
+            CustomFieldsPlugin::make()
+                ->modelTypes([
+                    \App\Models\User::class => 'User',
+                    \App\Models\Product::class => 'Product',
+                    \App\Models\Post::class => 'Blog Post',
+                ])
+                ->cluster(SettingsCluster::class) // Optional: Add to a cluster
+                ->navigationSort(10), // Optional: Set navigation order
+        ]);
+}
+```
+
+### Configuration Options
+
+| Method | Description |
+|--------|-------------|
+| `modelTypes(array $types)` | **Required.** Defines which models can have custom fields. Keys are the fully qualified class names, values are the display labels. |
+| `cluster(?string $cluster)` | Optional. Assigns the Custom Fields resource to a Filament Cluster. |
+| `navigationSort(?int $sort)` | Optional. Sets the navigation sort order (default: 10). |
+
 ## Usage Guide
 
 ### 1. Setting Up Custom Fields for a Model
