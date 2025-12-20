@@ -81,14 +81,4 @@ return [
         'field_removed' => 'Field removed successfully.',
         'invalid_model_type' => 'Invalid model type selected.',
     ],
-
-    'model_types' => [
-        'App\\Models\\Partner' => 'Partners',
-        'App\\Models\\Product' => 'Products',
-        'App\\Models\\Employee' => 'Employees',
-        'App\\Models\\Department' => 'Departments',
-        'App\\Models\\Position' => 'Positions',
-        'App\\Models\\Asset' => 'Assets',
-        'App\\Models\\Project' => 'Projects',
-    ],
 ];

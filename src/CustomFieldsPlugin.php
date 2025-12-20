@@ -12,6 +12,9 @@ class CustomFieldsPlugin implements Plugin
 
     protected ?int $navigationSort = null;
 
+    /** @var array<string, string> */
+    protected array $modelTypes = [];
+
     public function getId(): string
     {
         return 'custom-fields';
@@ -39,6 +42,28 @@ class CustomFieldsPlugin implements Plugin
     public function getNavigationSort(): ?int
     {
         return $this->navigationSort;
+    }
+
+    /**
+     * Configure the model types that can have custom fields.
+     *
+     * @param  array<string, string>  $modelTypes  An array mapping model class names to their labels
+     */
+    public function modelTypes(array $modelTypes): static
+    {
+        $this->modelTypes = $modelTypes;
+
+        return $this;
+    }
+
+    /**
+     * Get the configured model types.
+     *
+     * @return array<string, string>
+     */
+    public function getModelTypes(): array
+    {
+        return $this->modelTypes;
     }
 
     public function register(Panel $panel): void
